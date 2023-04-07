@@ -14,6 +14,7 @@ Source0:	https://github.com/quietvoid/dovi_tool/archive/%{version}/%{name}-%{ver
 # tar cJf dovi_tool-vendor-%{version}.tar.xz dovi_tool-%{version}/{vendor,Cargo.lock}
 Source1:	%{name}-vendor-%{version}.tar.xz
 # Source1-md5:	cb38fbd418397f094a2547187266a35d
+Patch0:		%{name}-x32.patch
 URL:		https://github.com/quietvoid/dovi_tool
 BuildRequires:	fontconfig-devel
 BuildRequires:	cargo >= 1.64.0
@@ -70,6 +71,7 @@ Statyczna biblioteka libdovi.
 
 %prep
 %setup -q -b1
+%patch0 -p1
 
 # use our offline registry
 export CARGO_HOME="$(pwd)/.cargo"
@@ -90,6 +92,12 @@ EOF
 
 # for tests only, not vendored from main dir
 %{__sed} -i -e '/criterion/d' dolby_vision/Cargo.toml
+
+%ifarch x32
+# add pf-no-simd feature to pathfinder_simd dependency
+echo 'features = ["pf-no-simd"]' >> vendor/pathfinder_geometry/Cargo.toml
+%{__sed} -i -e 's/141871f41ab4ac7af854e54f1f637fb168ffbc97fdb57c60608f11b8eb95f1d7/6e731c54bfe9de2e7eb7963b748ac71cf5c9c371658525d906ba2c99ac136f79/' vendor/pathfinder_geometry/.cargo-checksum.json
+%endif
 
 %build
 export CARGO_HOME="$(pwd)/.cargo"
