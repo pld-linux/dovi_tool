@@ -20,7 +20,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	cargo >= 1.64.0
 BuildRequires:	cargo-c
 BuildRequires:	rust >= 1.64.0
-BuildRequires:	rpmbuild(macros) >= 2.004
+BuildRequires:	rpmbuild(macros) >= 2.012
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 ExclusiveArch:	%{x8664} %{ix86} x32 aarch64 armv6hl armv7hl armv7hnl
