@@ -1,19 +1,19 @@
 Summary:	CLI tool for working with Dolby Vision
 Summary(pl.UTF-8):	Narzędzie CLI do pracy z Dolby Vision
 Name:		dovi_tool
-Version:	2.0.3
+Version:	2.1.0
 Release:	1
 License:	MIT
 Group:		Applications/Multimedia
 #Source0Download: https://github.com/quietvoid/dovi_tool/releases/
 Source0:	https://github.com/quietvoid/dovi_tool/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	e2350543569afecfad5082a966ffcdfd
+# Source0-md5:	59df75593a330e3cb693fd08678ea3b3
 # cd dovi_tool-%{version}
 # cargo vendor
 # cd ..
 # tar cJf dovi_tool-vendor-%{version}.tar.xz dovi_tool-%{version}/{vendor,Cargo.lock}
 Source1:	%{name}-vendor-%{version}.tar.xz
-# Source1-md5:	cb38fbd418397f094a2547187266a35d
+# Source1-md5:	d68fcb5e980ef11f36bd8ce1bd8d6c85
 Patch0:		%{name}-x32.patch
 URL:		https://github.com/quietvoid/dovi_tool
 BuildRequires:	fontconfig-devel
