@@ -71,7 +71,7 @@ Statyczna biblioteka libdovi.
 
 %prep
 %setup -q -b1
-%patch0 -p1
+%patch -P0 -p1
 
 # use our offline registry
 export CARGO_HOME="$(pwd)/.cargo"
